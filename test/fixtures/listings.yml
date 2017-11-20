@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  events: MyString
+  start_date: 2017-11-20
+  end_date: 2017-11-20
+  photos: MyString
+  description: MyText
+  experience: MyText
+  sort_code: 1
+  account_number: 1
+  price: 1
+  speciality: MyString
+  line1: MyString
+  line2: MyString
+  city: MyString
+  postcode: MyString
+  bookings_completed: 1
+  last_booking: 2017-11-20
+
+two:
+  user: two
+  events: MyString
+  start_date: 2017-11-20
+  end_date: 2017-11-20
+  photos: MyString
+  description: MyText
+  experience: MyText
+  sort_code: 1
+  account_number: 1
+  price: 1
+  speciality: MyString
+  line1: MyString
+  line2: MyString
+  city: MyString
+  postcode: MyString
+  bookings_completed: 1
+  last_booking: 2017-11-20
