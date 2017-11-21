@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:edit, :update]
+  get 'edit_profile', to: 'profiles#edit_profile'
+  patch 'edit_profile', to: 'profiles#update_profile'
+
+  resources :profiles, only: [:edit, :update]
   resources :listings do
     resource :booking, only: [:new, :create]
     resource :review, only: [:new, :create]
