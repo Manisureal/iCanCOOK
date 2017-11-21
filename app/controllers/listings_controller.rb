@@ -2,14 +2,17 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:index, :show, :create, :edit, :update, :destroy]
   def index
     @listings = Listing.all
+    authorize @listings
   end
 
   def show
     @listing = Listing.find(params[:id])
+    authorize @listing
   end
 
   def new
     @listing = Listing.new
+    authorize @listing
   end
 
   def create
@@ -20,6 +23,7 @@ class ListingsController < ApplicationController
     else
      render 'new'
     end
+    authorize @listing
   end
 
   def edit
@@ -37,11 +41,13 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     redirect_to root_path
+    authorize @listing
   end
 
   private
   def set_listing
     @listing = Listing.find(params[:id])
+    authorize @listing
   end
 
   def listing_params
