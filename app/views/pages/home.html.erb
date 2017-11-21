@@ -1,2 +1,12 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% content_for(:navbar_class, "navbar-home") %>
+
+<div class="banner">
+  <div class="banner-content text-center">
+    <h1>Welcome to iCanCook</h1>
+    <p>Find local cooks for any occasion</p>
+    <%= form_tag(listings_path, method: :get) do %>
+    <%= text_field_tag :query, params[:search], :placeholder => "Enter your postcode", style: "color:  black;", class: "form-control" %>
+     <%= submit_tag 'Search', :name => nil, class: "btn btn-primary", style: "margin-top: 10px;" %>
+    <% end %>
+  </div>
+</div>
