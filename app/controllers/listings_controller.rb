@@ -1,8 +1,7 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:index, :show, :create, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :create, :edit, :update, :destroy]
   def index
-    @listings = Listing.all
-    authorize @listings
+    @listings = policy_scope(Listing).order(created_at: :desc)
   end
 
   def show
