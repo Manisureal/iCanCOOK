@@ -9,10 +9,10 @@
   align-items: center;
   justify-content: space-between;
 }
-.navbar-home{
+.navbar-home {
   background: transparent;
   box-shadow: none;
-  position: absolute;
+  position: fixed;
   width: 100%;
   .navbar-wagon-link {
     color: white;
