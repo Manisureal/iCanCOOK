@@ -1,2 +1,25 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% content_for(:navbar_class, "navbar-home") %>
+
+<div class="banner">
+  <div class="banner-content text-center">
+    <h1>Welcome to iCanCook</h1>
+    <p>Find local cooks for any occasion</p>
+    <%= form_tag(listings_path, method: :get) do %>
+    <%= text_field_tag :query, params[:search], :placeholder => "Enter your postcode", style: "color:  black;", class: "form-control" %>
+     <%= submit_tag 'Search', :name => nil, class: "btn btn-primary", style: "margin-top: 10px;" %>
+    <% end %>
+  </div>
+</div>
+
+<h2>How it works</h2>
+<p>1. Search for available cooks in your local area</p>
+<p>2. Book your chosen cook for a specific date and communicate via messages</p>
+<p>3. Your cook will handle the cooking so you can focus on what really matters at your event</p>
+
+
+
+<h2>Become a cook</h2>
+<p>Meet Sarah</p>
+<%= image_tag "sarah.jpg", class: "avatar" %>
+<p>Sarah joined ICanCook in November 2017. She has been cooking since she was a child and has helped friends at their events. She loved the fact that she could do this full time via ICanCook and has not looked back since. "I love meeting different people via the platform and earning money for a hobby that I have always loved!"</p>
+

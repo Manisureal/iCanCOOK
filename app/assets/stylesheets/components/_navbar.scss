@@ -9,6 +9,16 @@
   align-items: center;
   justify-content: space-between;
 }
+.navbar-home {
+  background: transparent;
+  box-shadow: none;
+  position: fixed;
+  width: 100%;
+  .navbar-wagon-link {
+    color: white;
+    font-weight: bold;
+  }
+}
 
 /* Logo */
 .navbar-wagon-brand img {
