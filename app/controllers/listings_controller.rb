@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:index, :show, :create, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy]
   def index
     @listings = Listing.all
     authorize @listings
@@ -18,6 +18,8 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.user = current_user
+    @listing.dates = params[:listing][:dates].split(", ")
+
     if @listing.save
       redirect_to listing_path(@listing)
     else
@@ -51,6 +53,6 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-    params.require(:listing).permit(:events, :start_date, :end_date, :photos, :description, :experience, :sort_code, :account_number, :price, :speciality, :line1, :line2, :city, :postcode)
+    params.require(:listing).permit(:events, :photos, :description, :experience, :sort_code, :account_number, :price, :speciality, :line1, :line2, :city, :postcode, :dates)
   end
 end
