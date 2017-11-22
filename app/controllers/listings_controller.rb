@@ -19,7 +19,7 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.user = current_user
     @listing.dates = params[:listing][:dates].split(", ")
-
+    @listing.events = params[:listing][:events].reject(&:empty?)
     if @listing.save
       redirect_to listing_path(@listing)
     else
