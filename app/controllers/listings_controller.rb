@@ -3,6 +3,7 @@ class ListingsController < ApplicationController
   def index
     @listings = Listing.all
     authorize @listings
+    @listings = policy_scope(Listing).order(created_at: :desc)
   end
 
   def show
