@@ -1,1 +1,58 @@
-<h1>Help</h1>
+<div class="map" style="background-image: url('https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?auto=format&fit=crop&w=634&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D')"></div>
+
+<div class="container margin-top-negative">
+  <div class="row">
+    <div class="col-8">
+      <div class="listing-show-card">
+        <h1><%= @listing.user.first_name %></h1>
+        <p class="listing-show-address"><%= @listing.postcode %></p>
+      </div>
+      <div class="listing-show-card">
+        <h3>A bit more about this cook</h3>
+        <p><%= @listing.description %></p>
+        <div class="map" style="background-image: url('https://maps.googleapis.com/maps/api/staticmap?center=<%= @listing.line1 %>&zoom=13&scale=2&size=1000x1000&maptype=roadmap&markers=color:red%7C<%= @listing.postcode %>')"></div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="listing-show-card">
+        <h5>Book this cook!</h5>
+
+        <form action="">
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">From:</span>
+            <input type="text" class="form-control" placeholder="12/10/2017" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mt-2">
+            <span class="input-group-addon" id="basic-addon1">To:</span>
+            <input type="text" class="form-control" placeholder="18/10/2017" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <input type="submit" value="Book" class="btn btn-success mt-2" style="width: 100%">
+        </form>
+      </div>
+      <div class="listing-show-card">
+        <h3>Details</h3>
+        <div class="flex">
+          <div class="flex">
+            <i class="material-icons mr-2">Experience:</i><span><%= @listing.experience %></span>
+          </div>
+          <div class="flex ml-3">
+            <i class="material-icons mr-2">euro_symbol</i> <%= @listing.price %>
+          </div>
+        </div>
+      </div>
+      <div class="listing-show-card">
+        <div class="flex-align">
+          <h6 class="no-mb">Share</h6>
+
+          <div class="flex">
+            <i class="fa fa-facebook-square fa-2x mr-2"></i>
+            <i class="fa fa-twitter-square fa-2x mr-2"></i>
+            <i class="fa fa-pinterest-square fa-2x mr-2"></i>
+            <i class="fa fa-envelope-square fa-2x"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

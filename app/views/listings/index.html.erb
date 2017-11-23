@@ -1,16 +1,18 @@
-<div class="container">
-   <div class="row">
-     <% @listings.each do |listing| %>
-       <div class="col-xs-6 col-sm-4">
-         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= listing.price %>');">
-           <div class="card-category"><%= listing.user.first_name %></div>
-           <div class="card-description">
-             <h2><%= listing.experience %></h2>
-             <p><%= listing.speciality%></p>
-           </div>
-           <%= link_to "", listing_path(listing.id), class: "card-link" %>
-         </div>
-       </div>
-     <% end %>
-   </div>
- </div>
+
+
+
+ <div class="container">
+  <div class="row">
+    <% @listings.each do |listing| %>
+     <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+      <div class="card-category"><%= listing.user.first_name %></div>
+      <div class="card-description">
+        <h2><%= listing.experience %></h2>
+        <p><%= listing.speciality%></p>
+      </div>
+      <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+      <%= link_to "", listing_path(listing.id), class: "card-link" %>
+    </div>
+  <% end %>
+  </div>
+</div>
