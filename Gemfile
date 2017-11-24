@@ -18,7 +18,7 @@ gem 'font-awesome-sass'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
-gem 'webpacker'
+gem 'webpacker', '~> 3.0'
 
 group :development, :test do
   gem 'pry-byebug'
