@@ -1,1 +1,34 @@
-<h1>Welcome <%= @user.email %></h1>
+<div class="card">
+  <div class="card-user">
+    <div class="card-user-content"></div>
+      <img src="https://avatars1.githubusercontent.com/u/30607790?s=400&v=4" alt="profile-avatar" class="avatar"/>
+      <p>First name: <%= @user.first_name %></p>
+      <p>Last name: <%= @user.surname %></p>
+      <p>Email: <%= @user.email %></p>
+      <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a><a href="#"><i class="ion-social-twitter-outline"></i></a><a href="#"> <i class="ion-social-vimeo-outline"></i></a></div>
+    </div>
+  </div>
+  <div class="card-bookings">
+    <div class="card-bookings-content">
+      <% @bookings.each do |booking| %>
+      <div class="message">
+        <img class="avatar-large" src="https://avatars1.githubusercontent.com/u/30607790?s=400&v=4">
+        <div class="message-name">
+          <h3> Booking </h3>
+          <h3> #<%= booking.status %> </h3>
+        </div>
+        <div class="message-body">
+          <h4>Start time: <%= booking.start_time %></h4>
+          <h4>End time: <%= booking.end_time %></h4>
+          <h4>Duration: <%= booking.duration %></h4>
+          <p>Booking date: <%= booking.booking_date %></p>
+        </div>
+        <div class="message-status">
+          <p class="status accepted">Booking Cost</p>
+          <p class="price">€ <%= booking.total_price  %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
