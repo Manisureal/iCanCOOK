@@ -3,7 +3,11 @@ class ListingsController < ApplicationController
   def index
     @listings = Listing.all
     authorize @listings
+    if params[:query]
+      @listings = policy_scope(Listing).where("postcode ILIKE ?", "%#{params[:query]}%")
+    else
     @listings = policy_scope(Listing).order(created_at: :desc)
+    end
   end
 
   def show
