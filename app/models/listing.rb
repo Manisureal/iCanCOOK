@@ -5,5 +5,5 @@ class Listing < ApplicationRecord
 
   mount_uploader :photos, PhotoUploader
 
-  EVENTS = ["Canapes Parties", "BBQ", "Birthday Parties", "Dinner Parties"]
+  EVENTS = ["Canapes Parties", "BBQ", "Birthday Parties", "Dinner Parties", "Garden Parties", "Family Cooks"]
 end

@@ -6,9 +6,8 @@
       <%= simple_form_for @listing do |f| %>
       <h2>Availability</h2>
         <%= f.input :dates, as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "Select date" %>
-
-      <h2>Type of Events to Cater</h2>
-           <%= f.input :events, as: :check_boxes, collection: Listing::EVENTS, label_html: {class: "state"}, input_html: { class: "pretty p-default" }  %>
+      <h2>Events to Cater</h2>
+        <%= f.input :events, as: :check_boxes, wrapper: :vertical_radio_and_checkboxes, collection: Listing::EVENTS %>
       <h2>About yourself</h2>
         <%= f.input :description %>
         <%= f.input :experience %>
@@ -23,7 +22,7 @@
         <%= f.input :postcode %>
       <h2>Photo Gallery</h2>
         <%= f.input :photos %>
-        <%= f.button :submit %>
+        <%= f.button :submit, class: "btn btn-success" %>
       <% end %>
 
     </div>
