@@ -4,15 +4,40 @@
  <div class="container">
   <div class="row">
     <% @listings.each do |listing| %>
-     <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
-      <div class="card-category"><%= listing.user.first_name %></div>
-      <div class="card-description">
-        <h2><%= listing.experience %></h2>
-        <p><%= listing.speciality%></p>
-      </div>
-      <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-      <%= link_to "", listing_path(listing.id), class: "card-link" %>
-    </div>
+      <figure class="snip1336">
+      <%= image_tag listing.photos %>
+      <figcaption>
+        <img src="https://kitt.lewagon.com/placeholder/users/s" class="profile" />
+        <h2><%=listing.user.first_name %><span> Experience: <%= listing.experience  %> </span></h2>
+        <p> <%= listing.description.truncate(25)  %>  </p>
+        <a href="#" class="follow">Message</a>
+        <%= link_to "more info", listing_path(listing.id), class: "info" %>
+      </figcaption>
+    </figure>
   <% end %>
   </div>
 </div>
+
+
+
+<!--
+
+ <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+      <div class="card-category"><%# listing.user.first_name %></div>
+      <div class="card-description">
+        <h2><%# listing.experience %></h2>
+        <p><%# listing.speciality%></p>
+      </div>
+      <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+      <%# link_to "", listing_path(listing.id), class: "card-link" %>
+    </div>
+
+ -->
+
+
+
+
+
+
+
+
