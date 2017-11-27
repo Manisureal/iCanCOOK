@@ -3,7 +3,9 @@ class ListingsController < ApplicationController
   def index
     @listings = Listing.all
     authorize @listings
-    if params[:query]
+    if params[:dates]
+      @listings = policy_scope(Listing).where("dates = ?", "{#{params[:dates]}}")
+    elsif params[:query]
       @listings = policy_scope(Listing).where("postcode ILIKE ?", "%#{params[:query]}%")
     else
     @listings = policy_scope(Listing).order(created_at: :desc)
@@ -12,6 +14,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    @booking = Booking.new
     authorize @listing
   end
 

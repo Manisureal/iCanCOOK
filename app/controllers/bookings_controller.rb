@@ -6,16 +6,23 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @listing = Listing.find(params[:listing_id])
+    @booking.user = current_user
+    @booking.listing = @listing
+    @booking.duration = (@booking.end_time - @booking.start_time) / 3600
+    @booking.total_price = @booking.duration * @listing.price
     if @booking.save
-      redirect_to root_path
+      # raise
+      redirect_to dashboard_path
     else
-      render 'new'
+      flash[:alert] = "Booking fields cannot be blank"
+      render template: "listings/show"
     end
-    authorize @booking
+     authorize @booking
   end
 
   private
   def booking_params
-    params.require(:booking).permit(:booking_date, :status)
+    params.require(:booking).permit(:booking_date, :start_time, :end_time, :status)
   end
 end

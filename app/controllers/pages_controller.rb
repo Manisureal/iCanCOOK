@@ -8,6 +8,6 @@ class PagesController < ApplicationController
     @user = current_user
     @bookings = Booking.where(user: @user)
     @listings = Listing.where(user: @user)
-    @find_buyer = Booking.where(listing: @user).first.user
+    @find_buyer = Booking.where(listing: @user).first.user if @find_buyer
   end
 end
