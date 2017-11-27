@@ -22,12 +22,20 @@
 // new code to use incase of back up
 
 .box {
-  border: 1px #949396 solid;
+  border: 1px white solid;
   margin-left: 20px;
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-  margin-top: 20px;
-  border-radius:5px;
+  box-shadow: 1px 1px 30px rgba(0,0,0,0.1);
+  margin-top: -85px;
+  // background-color: #E8F1F5;
+  background-color: #FBF7F7;
+  opacity: 0.85;
+}
 
+.booking-dashboard h2 {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 30;
+  font-weight: bold;
+  margin-left: 10px;
 }
 
 .dash-avatar {
@@ -104,10 +112,152 @@
 .status.pending {
   color: lightgrey;
 }
+.btn-medium {
+  color: #999999;
+  border: 1px solid #999999;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  margin-left: 10px;
+  font-size: 1;
+}
+.btn-medium:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: #999999;
+}
 
 
 // Background page image
 
 .wrapper-body-dashboard {
   margin-bottom: 150px;
+}
+
+
+
+// USER INFO BOX SCSS
+
+
+.dashboard-user {
+  font-family: 'Roboto', Arial, sans-serif;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 380px;
+  max-width: 315px;
+  width: 100%;
+  color: #ffffff;
+  text-align: left;
+  line-height: 1.4em;
+  background-color: #141414;
+  margin-top: -85px;
+  box-shadow: 1px 1px 30px rgba(0,0,0,0.7);
+}
+.dashboard-user * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.dashboard-user img {
+  max-width: 100%;
+  vertical-align: top;
+  opacity: 0.85;
+}
+.dashboard-user figcaption {
+  width: 100%;
+  background-color: #141414;
+  padding: 25px;
+  position: relative;
+}
+.dashboard-user figcaption:before {
+  position: absolute;
+  content: '';
+  bottom: 100%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 55px 0 0 320px;
+  border-color: transparent transparent transparent #141414;
+}
+.dashboard-user figcaption a {
+  padding: 5px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  margin: 10px 0;
+  display: inline-block;
+  opacity: 0.65;
+  width: 47%;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.dashboard-user figcaption a:hover {
+  opacity: 1;
+}
+.dashboard-user .profile {
+  border-radius: 50%;
+  position: absolute;
+  bottom: 100%;
+  left: 25px;
+  z-index: 1;
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+.dashboard-user .follow {
+  margin-right: 4%;
+  margin-top: 20px;
+  border-color: #2980b9;
+  color: #2980b9;
+}
+.dashboard-user h2 {
+  margin: 0 0 5px;
+  font-weight: 300;
+}
+.dashboard-user h2 span {
+  display: block;
+  font-size: 0.5em;
+  color: #2980b9;
+  margin-bottom: 20px;
+}
+.dashboard-user p {
+  margin: 0 0 10px;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+
+// BECOME A COOK SECTION
+
+.be-a-cook {
+  margin-top: 150px;
+}
+
+.btn-treehouse {
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: #6AD58B;
+  transition: background 0.3s ease;
+}
+.cook-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.btn-treehouse:hover {
+  opacity: 1;
+  background: #3ac162;
+  text-decoration: none;
+  color: white;
 }
