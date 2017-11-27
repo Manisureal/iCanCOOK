@@ -1,5 +1,7 @@
 class ListingsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
+
   def index
     @listings = Listing.all
     authorize @listings
