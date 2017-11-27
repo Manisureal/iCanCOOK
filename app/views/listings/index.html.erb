@@ -10,7 +10,7 @@
         <img src="https://kitt.lewagon.com/placeholder/users/s" class="profile" />
         <h2><%=listing.user.first_name %><span> Experience: <%= listing.experience  %> </span></h2>
         <p> <%= listing.description.truncate(25)  %>  </p>
-        <p> <%= listing.dates %></p>
+        <p> <%= listing.dates.flatten %></p>
         <a href="#" class="follow">Message</a>
         <%= link_to "more info", listing_path(listing.id), class: "info" %>
       </figcaption>
