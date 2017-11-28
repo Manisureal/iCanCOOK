@@ -50,6 +50,12 @@
       </div>
     </div>
 
+
+
+  <!-- BUYER -->
+    <% listing = Listing.where(user_id: current_user.id) %>
+    <% if listing.empty? %>
+
     <div class="row">
       <div class="be-a-cook">
         <div class="col-xs-12 col-md-4">
@@ -82,15 +88,66 @@
       </div>
     </div>
 
+
+  <!-- CHEF -->
+    <% else %>
+
+      <div class="row">
+        <div class="listing-header">
+          <h2>Your listing:</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="availability-cards">
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="dates-card">
+              <h3><i class="fa fa-calendar" aria-hidden="true"></i> Your availability </h3>
+              <ul class="dates-list">
+                <% @listings.last.dates.each do |date| %>
+                  <li class="date"><%= date %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="price-card">
+              <h3><i class="fa fa-money" aria-hidden="true"></i> Price/ h </h3>
+              <p><%= @listings.last.price %></p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="last-booking">
+              <h3><i class="fa fa-check-square" aria-hidden="true"></i> Last booked </h3>
+              <p><%= @listings.last.price %></p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="last-booking">
+              <h3><i class="fa fa-line-chart" aria-hidden="true"></i> Bookings to date </h3>
+              <p><%= @listings.last.price %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
   </div>
 </div>
 
 
+<!--"Dates",
+    "price"
+    "Last booking",
+    "Bookings completed",
 
-<% listing = Listing.where(user_id: current_user.id) %>
-<% if listing.empty? %>
-  <!-- CLIENT -->
-<% else %>
-  <!-- CHEF -->
-<% end %>
+    "Address",
+
+    "photos"
+
+    "Events",
+    "description"
+    "experience"
+    "speciality"-->
 
