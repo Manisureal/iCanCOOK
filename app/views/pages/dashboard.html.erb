@@ -8,34 +8,42 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4">
-        <div class="box">
-          <div class="dash-avatar">
-            <img src='https://kitt.lewagon.com/placeholder/users/s' />
-          </div>
-            <h1 class="text-center"><%= @user.first_name %></h1>
-        </div>
+        <figure class="dashboard-user">
+          <%= image_tag "https://source.unsplash.com/collection/1016/800x500", id: "logo" %>
+          <figcaption>
+            <%= cl_image_tag @user.photo, class: "profile", width: 120, height: 120, crop: :thumb %>
+            <h2><span> User info: </span></h2>
+            <p><%= @user.first_name %></p>
+            <p><%= @user.surname %></p>
+            <p><%= @user.email %></p>
+            <%= link_to "Edit details", edit_user_registration_path, class: "follow" %>
+          </figcaption>
+        </figure>
       </div>
 
       <div class="col-xs-12 col-sm-8">
         <div class="box">
           <div class="booking-dashboard">
-            <h2 class="text-center"> My bookings </h2>
+            <h2><i class="fa fa-calendar-check-o" aria-hidden="true"></i> My bookings </h2>
             <% @bookings.each do |booking| %>
             <div class="message">
-              <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+              <%= cl_image_tag booking.listing.user.photo, class: "profile", width: 80, height: 80, crop: :thumb %>
               <div class="message-name">
                 <h3><%= booking.listing.user.first_name %></h3>
                 <p><%= booking.booking_date %></p>
               </div>
               <div class="message-body">
                 <p><strong> Booked for: <%= booking.duration %> hrs</strong></p>
-                <p>
-                  <%= booking.listing.description %>
-                </p>
+                <p><%= booking.listing.description %></p>
               </div>
               <div class="message-status">
+
                 <p class="status pending"><%# booking.status.capitalize %></p>
-                <p class="price">£ <%= booking.total_price %></p>
+                <p class="price">£ <%= booking.total_amount %></p>
+
+              </div>
+              <div class="view-more">
+                <%= link_to "View", dashboard_path, class: "btn-medium" %>
               </div>
             </div>
             <% end %>
@@ -43,9 +51,105 @@
         </div>
       </div>
     </div>
+
+
+
+  <!-- BUYER -->
+    <% listing = Listing.where(user_id: current_user.id) %>
+    <% if listing.empty? %>
+
+    <div class="row">
+      <div class="be-a-cook">
+        <div class="col-xs-12 col-md-4">
+          <div class="text-center">
+            <i class="fa fa-search icon-home" aria-hidden="true"></i>
+            <h3> Enjoy it </h3>
+            <p class="home-text">Be creative, cook your own thing, cooking is an art</p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="text-center">
+            <i class="fa fa-search icon-home" aria-hidden="true"></i>
+            <h3> Earn money </h3>
+            <p class="home-text">This is a great opportunity for you to earn money doing what you love</p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="text-center">
+            <i class="fa fa-cutlery icon-home" aria-hidden="true"></i>
+            <h3> Get social </h3>
+            <p class="home-text">Get to know great people at local events and have fun</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cook-button">
+        <%= link_to "I want to become a cook", new_listing_path, class: "btn-treehouse" %>
+      </div>
+    </div>
+
+
+  <!-- CHEF -->
+    <% else %>
+
+      <div class="row">
+        <div class="listing-header">
+          <h2>Your listing:</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="availability-cards">
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="dates-card">
+              <h3><i class="fa fa-calendar" aria-hidden="true"></i> Your availability </h3>
+              <ul class="dates-list">
+                <% @listings.last.dates.each do |date| %>
+                  <li class="date"><%= date %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="price-card">
+              <h3><i class="fa fa-money" aria-hidden="true"></i> Price/ h </h3>
+              <p><%= @listings.last.price %></p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="last-booking">
+              <h3><i class="fa fa-check-square" aria-hidden="true"></i> Last booked </h3>
+              <p><%= @listings.last.price %></p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="last-booking">
+              <h3><i class="fa fa-line-chart" aria-hidden="true"></i> Bookings to date </h3>
+              <p><%= @listings.last.price %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
   </div>
 </div>
 
 
+<!--"Dates",
+    "price"
+    "Last booking",
+    "Bookings completed",
 
+    "Address",
+
+    "photos"
+
+    "Events",
+    "description"
+    "experience"
+    "speciality"-->
 

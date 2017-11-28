@@ -11,6 +11,8 @@ gem 'rails', '5.1.4'
 gem 'redis'
 gem "pundit"
 gem 'carrierwave', '~> 0.11.2'
+gem 'money-rails'
+gem 'stripe'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
