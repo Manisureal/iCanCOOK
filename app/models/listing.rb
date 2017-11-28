@@ -5,5 +5,7 @@ class Listing < ApplicationRecord
 
   mount_uploader :photos, PhotoUploader
 
+  monetize :price_amount_pennies
+
   EVENTS = ["Canapes Parties", "BBQ", "Birthday Parties", "Dinner Parties", "Garden Parties", "Family Cooks"]
 end

@@ -10,10 +10,10 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.listing = @listing
     @booking.duration = (@booking.end_time - @booking.start_time) / 3600
-    @booking.total_price = @booking.duration * @listing.price
+    @booking.total_amount = @booking.duration * @listing.price_amount
     if @booking.save
       # raise
-      redirect_to dashboard_path
+      redirect_to new_listing_booking_payment_path(@booking, @booking.listing)
     else
       flash[:alert] = "Booking fields cannot be blank"
       render template: "listings/show"

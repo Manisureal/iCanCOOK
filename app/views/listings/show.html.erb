@@ -47,7 +47,7 @@
         <h3>Details</h3>
         <div class="flex">
           <div class="flex">
-            <i class="material-icons mr-2">Price per Hour: £</i><span><%= @listing.price %></span><br>
+            <i class="material-icons mr-2">Price per Hour: Price per hour: <%= humanized_money_with_symbol(@listing.price_amount) %></span><br>
           </div>
         </div>
       </div>

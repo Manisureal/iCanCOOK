@@ -10,4 +10,11 @@ class PagesController < ApplicationController
     @listings = Listing.where(user: @user)
     @find_buyer = Booking.where(listing: @user).first.user if @find_buyer
   end
+
+  def confirm
+    @user = current_user
+    @booking = Booking.where(user: @user).last
+
+  end
+
 end
