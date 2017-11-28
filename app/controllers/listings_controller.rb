@@ -3,15 +3,18 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   def index
-    @listings = Listing.all
+    @listings = policy_scope(Listing)
     authorize @listings
+
     if params[:dates]
-      @listings = policy_scope(Listing).where("dates = ?", "{#{params[:dates]}}")
-    elsif params[:query]
-      @listings = policy_scope(Listing).where("postcode ILIKE ?", "%#{params[:query]}%")
-    else
-    @listings = policy_scope(Listing).order(created_at: :desc)
+      @listings = @listings.where("? = ANY (dates)", params[:dates])
     end
+
+    if params[:query]
+      @listings = @listings.where("postcode ILIKE ?", "%#{params[:query]}%")
+    end
+
+    @listings = @listings.order(created_at: :desc)
   end
 
   def show
