@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'pages#dashboard'
   get 'confirm', to: 'pages#confirm'
+  resources :conversations do
+  resources :messages
+ end
   resources :profiles, only: [:edit, :update]
   resources :listings do
     resources :bookings, only: [:new, :create] do
