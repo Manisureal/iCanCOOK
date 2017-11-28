@@ -1,0 +1,9 @@
+<h1>Confirm your booking</h1>
+<p>Hi <%= @booking.user.first_name %></p>
+<p>You are booking <%= @booking.listing.user.first_name %> on the <%= @booking.booking_date %></p>
+<p> <%= @booking.listing.user.first_name %> will come at <%= @booking.start_time %> and stay until <%= @booking.end_time %> for a total of <%=  @booking.duration %> hours</p>
+
+<p>The total amount for this will be £<%= @booking.total_amount %></p>
+
+<%= link_to "pay here", new_listing_booking_payment_path(@booking, @booking.listing) %>
+
