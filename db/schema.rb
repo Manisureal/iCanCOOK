@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20171127174718) do
     t.date "booking_date"
     t.integer "total_price"
     t.integer "duration"
-    t.string "status", default: "Pending"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.time "start_time"
