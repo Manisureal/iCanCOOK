@@ -238,7 +238,7 @@
 // BECOME A COOK SECTION
 
 .be-a-cook {
-  margin-top: 150px;
+  margin-top: 80px;
 }
 
 .btn-treehouse {
@@ -275,4 +275,65 @@
   font-size: 30;
   font-weight: bold;
   margin-left: 23px;
+}
+
+.text-center {
+  border: 10px white solid;
+  box-shadow: 1px 1px 30px rgba(0,0,0,0.1);
+}
+
+.home-text {
+  margin-bottom: 40px;
+}
+
+.icon-home {
+  margin-top: 40px;
+}
+
+.availability-cards h2 {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 30;
+  font-weight: bold;
+  margin-left: 23px;
+  margin-top: 20px;
+}
+
+.availability-card {
+  border: 10px white solid;
+  box-shadow: 1px 1px 30px rgba(0,0,0,0.1);
+  height: 230px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 6; /* number of lines to show */
+   // line-height: X;        /* fallback */
+   // max-height: X*N;       /* fallback */
+}
+
+.availability-card-info {
+  padding-left: 5px;
+  border: 10px white solid;
+  box-shadow: 1px 1px 30px rgba(0,0,0,0.1);
+  height: 230px;
+  margin: 25px 15px;
+}
+
+.number-paragraph {
+  font-size: 100px;
+  text-align: center;
+}
+
+.number-paragraph-date {
+  font-size: 40px;
+  text-align: center;
+}
+
+
+.info-row {
+  border-bottom: 1px solid rgba(220,224,244,0.4);
+  padding: 10px 0px;
+}
+.info-row:last-child {
+  border-bottom: none;
 }
