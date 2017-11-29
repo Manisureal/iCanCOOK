@@ -14,7 +14,7 @@
         <p> <%= listing.description.truncate(25)  %>  </p>
         <p> <%= listing.dates.flatten %></p>
         <p>Price per hour: <%= humanized_money_with_symbol(listing.price_amount) %></p>
-        <a href="#" class="follow">Message</a>
+        <%= link_to "messages", create_convo_path(listing.user) , method: :post, class: "info" %>
         <%= link_to "more info", listing_path(listing.id), class: "info" %>
       </figcaption>
     </figure>
