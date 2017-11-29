@@ -1,4 +1,4 @@
-<div class="banner" style="height: 50vh; background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=2100&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');">
+<div class="banner" style="height: 30vh; background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=2100&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');">
   <div class="banner-content">
     <h1><%= @user.first_name %>'s Dashboard</h1>
   </div>
@@ -20,36 +20,40 @@
           </figcaption>
         </figure>
       </div>
-
-      <div class="col-xs-12 col-sm-8">
-        <div class="box">
-          <div class="booking-dashboard">
-            <h2><i class="fa fa-calendar-check-o" aria-hidden="true"></i> My bookings </h2>
-            <% @bookings.each do |booking| %>
-            <div class="message">
-              <%= cl_image_tag booking.listing.user.photo, class: "profile", width: 80, height: 80, crop: :thumb %>
-              <div class="message-name">
-                <h3><%= booking.listing.user.first_name %></h3>
-                <p><%= booking.booking_date %></p>
-              </div>
-              <div class="message-body">
-                <p><strong> Booked for: <%= booking.duration %> hrs</strong></p>
-                <p><%= booking.listing.description %></p>
-              </div>
-              <div class="message-status">
-
-                <p class="status pending"><%# booking.status.capitalize %></p>
-                <p class="price">£ <%= booking.total_amount %></p>
-
-              </div>
-              <div class="view-more">
-                <%= link_to "View", dashboard_path, class: "btn-medium" %>
-              </div>
-            </div>
-            <% end %>
+      <% if @bookings.count < 0 %>
+        <div class="row">
+          <div class="cook-button">
+            <%= link_to "Book a great cook", root_path, class: "btn-treehouse" %>
           </div>
         </div>
-      </div>
+      <% else %>
+        <div class="col-xs-12 col-sm-8">
+          <div class="box">
+            <div class="booking-dashboard">
+              <h2><i class="fa fa-calendar-check-o" aria-hidden="true"></i> My bookings </h2>
+              <% @bookings.each do |booking| %>
+              <div class="message">
+                <%= cl_image_tag booking.listing.user.photo, class: "profile", width: 80, height: 80, crop: :thumb %>
+                <div class="message-name">
+                  <h3><%= booking.listing.user.first_name %></h3>
+                  <p><%= booking.booking_date %></p>
+                </div>
+                <div class="message-body">
+                  <p><strong> Booked for: <%= booking.duration %> hrs</strong></p>
+                  <p><%= booking.listing.description %></p>
+                </div>
+                <div class="message-status">
+
+                  <p class="status pending"><%# booking.status.capitalize %></p>
+                  <p class="price">£ <%= booking.total_amount %></p>
+
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
 
 
@@ -97,6 +101,7 @@
       <div class="row">
         <div class="listing-header">
           <h2>Your listing:</h2>
+          <%= link_to "Edit your listing", edit_listing_path(@listing), class: "btn-medium-listing" %>
         </div>
       </div>
 
@@ -114,14 +119,22 @@
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="availability-card">
-              <h2><i class="fa fa-money" aria-hidden="true"></i> Price/ h</h2>
-              <p class="number-paragraph">£<%= @listings.last.price_amount_pennies %></p>
+              <div>
+                <h2><i class="fa fa-money" aria-hidden="true"></i> £ / h</h2>
+              </div>
+              <div class="number-paragraph-div">
+                <p class="number-paragraph"><%= @listings.last.price_amount_pennies %></p>
+              </div>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="availability-card">
-              <h2><i class="fa fa-check-square" aria-hidden="true"></i> Last booked</h2>
-              <p class="number-paragraph-date"><%= @last_booking.booking_date %></p>
+              <div>
+                <h2><i class="fa fa-check-square" aria-hidden="true"></i> Last booked</h2>
+              </div>
+              <div class="number-paragraph-div">
+                <p class="number-paragraph-date"><%= @last_booking.booking_date %></p>
+              </div>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3">
@@ -134,28 +147,60 @@
       </div>
 
       <div class="row">
-        <div class="availability-card-info">
-          <div class="col-xs-12 col-md-6">
-            <div class="col-xs-12">
-              <div class="info-row">
-                <p><strong>Description: </strong><%= @listings.last.description %></p>
+        <div class="col-xs-12 col-md-6">
+          <div class="availability-card-info">
+            <h2><strong>Your information:</strong></h2>
+            <div class="info-row">
+              <p><strong>Description: </strong><%= @listing.description %></p>
+            </div>
+            <div class="info-row">
+              <p><strong>Experience: </strong><%= @listing.experience %></p>
+            </div>
+            <div class="info-row">
+              <p><strong>Specialty: </strong><%= @listing.speciality %></p>
+            </div>
+            <div class="info-row">
+              <p><strong>Events: </strong><%= @listing.events.join(" | ") %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <div class="listing-photos">
+            <div class="header-and-button">
+              <h2><strong>Your photos</strong></h2>
+              <%= link_to "View / Edit", "#", class: "btn-medium" %>
+            </div>
+            <div class="availability-card-photo">
+              <%= image_tag "https://source.unsplash.com/collection/160213/250x189", class: "card-photo" %>
+              <%= image_tag "https://source.unsplash.com/collection/251966/250x189", class: "card-photo" %>
+              <%= image_tag "https://source.unsplash.com/collection/239835/250x189", class: "card-photo" %>
+              <%= image_tag "https://source.unsplash.com/collection/191435/250x189", class: "card-photo" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <div class="box-booked-me">
+          <div class="booking-dashboard">
+            <h2><i class="fa fa-calendar-check-o" aria-hidden="true"></i> My upcoming appointments </h2>
+            <% @my_upcoming_appointments.each do |appointment| %>
+            <div class="message">
+              <%= cl_image_tag appointment.user.photo, class: "profile", width: 80, height: 80, crop: :thumb %>
+              <div class="message-name">
+                <h3><strong><%= appointment.user.first_name %></strong> </h3>
+              </div>
+              <div class="message-body">
+                <p><strong>Date and time: </strong></p>
+                <p><%= appointment.booking_date %></p>
+                <p>Your booking starts at <%= appointment.start_time %>, lasts <%= appointment.duration %> hours, ending at <%= appointment.end_time %></p>
+              </div>
+              <div class="message-status">
+                <p><strong> Your earning: </strong></p>
+                <p class="price">£ <%= appointment.total_amount_pennies %></p>
               </div>
             </div>
-            <div class="col-xs-12">
-              <div class="info-row">
-                <p><strong>Experience: </strong><%= @listings.last.experience %></p>
-              </div>
-            </div>
-            <div class="col-xs-12">
-              <div class="info-row">
-                <p><strong>Specialty: </strong><%= @listings.last.speciality %></p>
-              </div>
-            </div>
-            <div class="col-xs-12">
-              <div class="info-row">
-                <p><strong>Events: </strong><%= @listings.last.events %></p>
-              </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -165,6 +210,20 @@
   </div>
 </div>
 
+<!--
+    ***** PERSON THAT BOOKED YOU (IMAGE AND NAME)
+
+    t.date "booking_date"
+    t.integer "duration"
+    t.time "start_time"
+    t.time "end_time"
+
+    t.integer "total_price"
+    t.integer "total_amount_pennies",
+ -->
+
+
+
 
 <!--"Dates",
     "price"
@@ -173,9 +232,11 @@
 
     "Address",
 
+    "bookings where I was booked"
+
     "photos"
 
-    "bookings where I was booked"
+    ***Add call to action if they have 0 bookings
 
     "Events",
     "description"
