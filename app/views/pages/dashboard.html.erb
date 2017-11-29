@@ -20,7 +20,7 @@
           </figcaption>
         </figure>
       </div>
-      <% if @bookings.count < 0 %>
+      <% if @bookings.count <= 0 %>
         <div class="row">
           <div class="cook-button">
             <%= link_to "Book a great cook", root_path, class: "btn-treehouse" %>
@@ -66,21 +66,21 @@
       <div class="be-a-cook">
         <div class="col-xs-12 col-md-4">
           <div class="text-center">
-            <i class="fa fa-search icon-home" aria-hidden="true"></i>
+            <img src="https://images.unsplash.com/photo-1502901930015-158e72cff877?auto=format&fit=crop&w=1500&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="enjoy" id="enjoy-it">
             <h3> Enjoy it </h3>
             <p class="home-text">Be creative, cook your own thing, cooking is an art</p>
           </div>
         </div>
         <div class="col-xs-12 col-md-4">
           <div class="text-center">
-            <i class="fa fa-search icon-home" aria-hidden="true"></i>
+            <img src="https://images.unsplash.com/photo-1475650522725-015d35677789?auto=format&fit=crop&w=1500&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="money" id="earn-money">
             <h3> Earn money </h3>
             <p class="home-text">This is a great opportunity for you to earn money doing what you love</p>
           </div>
         </div>
         <div class="col-xs-12 col-md-4">
           <div class="text-center">
-            <i class="fa fa-cutlery icon-home" aria-hidden="true"></i>
+            <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&w=1500&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="social" id="get-social">
             <h3> Get social </h3>
             <p class="home-text">Get to know great people at local events and have fun</p>
           </div>

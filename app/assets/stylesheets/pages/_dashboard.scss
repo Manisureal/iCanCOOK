@@ -412,3 +412,21 @@
 .card-photo {
   width: 50%;
 }
+
+#enjoy-it {
+  width: 100%;
+  -webkit-clip-path: polygon(0 0, 54% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(0 0, 54% 0, 100% 100%, 0% 100%);
+}
+
+#earn-money {
+  width: 100%;
+  -webkit-clip-path: polygon(0 0, 52% 0, 100% 100%, 44% 100%);
+  clip-path: polygon(0 0, 52% 0, 100% 100%, 44% 100%);
+}
+
+#get-social {
+  width: 100%;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
+}
