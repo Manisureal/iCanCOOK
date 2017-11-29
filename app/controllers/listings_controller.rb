@@ -14,6 +14,12 @@ class ListingsController < ApplicationController
       @listings = @listings.where("postcode ILIKE ?", "%#{params[:query]}%")
     end
 
+    if @listings.empty?
+      @not_found = true
+      @listings = Listing.all
+    end
+
+
     @listings = @listings.order(created_at: :desc)
   end
 

@@ -25,3 +25,7 @@ flatpickr(".time-picker", {
     // defaultDate: "3:30"
 
 })
+
+flatpickr(".home-date", {
+   altInput: true
+})
