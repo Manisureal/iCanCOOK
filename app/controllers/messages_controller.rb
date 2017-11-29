@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   end
 
 def index
-  @messages = policy_scope(Message)
+  @messages = policy_scope(Message.where(conversation: @conversation))
   @message = Message.new
  end
 

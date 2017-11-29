@@ -5,16 +5,17 @@ def index
  @conversations = policy_scope(Conversation)
  @users = User.all
 
+
  end
 
 def create
- if Conversation.between(params[:sender_id],params[:recipient_id])
+ if Conversation.between(params[:user_id],current_user)
    .present?
-    @conversation = Conversation.between(params[:sender_id],
-     params[:recipient_id]).first
+    @conversation = Conversation.between(params[:user_id],
+     current_user).first
     authorize @conversation
  else
-  @conversation = Conversation.create!(conversation_params)
+  @conversation = Conversation.create(recipient_id: params[:user_id], sender_id: current_user.id)
   authorize @conversation
  end
  redirect_to conversation_messages_path(@conversation)
@@ -22,6 +23,6 @@ end
 
 private
  def conversation_params
-  params.permit(:sender_id, :recipient_id)
+  params.permit(:sender_id, :recipient_id, :user_id)
  end
 end

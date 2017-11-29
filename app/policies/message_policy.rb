@@ -1,8 +1,12 @@
 class MessagePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope
     end
+  end
+
+  def index?
+
   end
 
   def create?
