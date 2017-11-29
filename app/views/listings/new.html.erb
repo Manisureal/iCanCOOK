@@ -3,29 +3,8 @@
     <div class="col-xs-12">
       <h1>Create your listing</h1>
 
-      <%= simple_form_for @listing do |f| %>
-      <h2>Availability</h2>
-        <%= f.input :dates, as: :string, label: 'Choose your dates', required: false, input_html: {class: "datepicker"}, placeholder: "Select date" %>
-      <h2>Events to Cater</h2>
-        <%= f.input :events, as: :check_boxes, label: 'Choose your events', wrapper: :vertical_radio_and_checkboxes, collection: Listing::EVENTS %>
-      <h2>About yourself</h2>
-        <%= f.input :description %>
-        <%= f.input :experience %>
-        <%= f.input :speciality %>
-      <h2>Account Details</h2>
-        <%= f.input :sort_code %>
-        <%= f.input :account_number %>
-      <h2>Address Details</h2>
-        <%= f.input :line1 %>
-        <%= f.input :line2 %>
-        <%= f.input :city %>
-        <%= f.input :postcode %>
-      <h2>Price</h2>
-        <%= f.input :price_amount, label: 'Price per hour (£)' %>
-      <h2>Photo Gallery</h2>
-        <%= f.input :photos %>
-        <%= f.button :submit, class: "btn btn-success" %>
-      <% end %>
+      <%= render "shared/form", listing: @listing %>
+
 
     </div>
   </div>
