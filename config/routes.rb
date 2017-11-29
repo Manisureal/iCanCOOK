@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'pages#dashboard'
   get 'confirm', to: 'pages#confirm'
+  resources :conversations, except: [:create] do
+  resources :messages
+ end
+  post 'conversation/:user_id', to: "conversations#create", as: :create_convo
   resources :profiles, only: [:edit, :update]
   resources :listings do
     resources :bookings, only: [:new, :create] do

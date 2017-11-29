@@ -11,7 +11,13 @@
 
       <!-- Links when logged in -->
       <%= link_to "Become a Cook", new_listing_path, class: "navbar-wagon-item navbar-wagon-link" %>
+<<<<<<< HEAD
       <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+=======
+      <%= link_to "Messages", conversations_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "My profile", dashboard_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" ) %>
+>>>>>>> 2f71a925d20de2719b13ff4408ce0fa93e0de91a
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">

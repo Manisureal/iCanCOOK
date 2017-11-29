@@ -1,0 +1,43 @@
+<% if @over_ten %>
+ <%= link_to "Show Previous", "#" %>
+<% end %>
+<div class="ui segment">
+ <% @messages.each do |message| %>
+  <section>
+  <div class="chat">
+    <ul>
+
+      <li class="<%= user?(message, current_user) %>">
+        <a class="user" href="#"><img alt="" src="<%= message.user.photo %>" /></a>
+        <div class="date">
+          <%= message.created_at.strftime("%b %e, %l:%M %p") %>
+        </div>
+        <div class="message">
+          <p>
+            <%= message.body %>
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+<% end %>
+
+ </div>
+
+</div>
+
+
+
+
+
+<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+ <div class="field">
+   <%= f.text_area :body, class: "form-control" %>
+ </div>
+ <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+ <div>
+   <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
+ </div>
+
+<% end %>
