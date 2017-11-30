@@ -36,6 +36,7 @@
 
 
 
+
 <div class="container" id="message-reply-cont">
 
 <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
@@ -43,6 +44,7 @@
    <%= f.text_area :body, class: "form-control", id:"message-reply" %>
  </div>
  <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+
  <div id="message-buttons">
    <%= f.submit "Add Reply", class: "btn btn-success ui blue labeled submit icon button" %>
   <% other_user = User.find(@conversation.not_me(current_user)) %>
@@ -50,7 +52,7 @@
    <%= link_to "Book", listing_path(other_user.listing), class: "btn btn-treehouse btn-book"  %>
   <% end %>
 
- </div>
+
 
 <% end %>
 </div>
