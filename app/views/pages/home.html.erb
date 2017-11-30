@@ -83,5 +83,20 @@
 
 </div>
 
+<%= content_for(:after_js) do %>
+  <script>
+    var nav = $('.navbar-wagon').offset().top
+    var wrapperHome = $('.wrapper-home').offset().top
+
+    $(document).scroll(function() {
+      var scrollPos = $(document).scrollTop();
+      if (scrollPos >= wrapperHome) {
+        $('.navbar-wagon').css('background-color', '#433E3F');
+      } else {
+        $('.navbar-wagon').css('background-color', 'transparent');
+      }
+    });
+  </script>
+<% end %>
 
 
