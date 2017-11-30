@@ -31,16 +31,20 @@
            <td><p>£<%= @booking.total_amount %></p></td>
         </tr>
      </table>
-     <a class="pay">
+     <!-- <a class="pay"> -->
+      <%= form_tag listing_booking_payments_path(@booking)  do %>
         <div class="pay">
            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-name="My booking"
-    data-email="<%= current_user.email %>"
-    data-description="booking <%= @booking.listing.user.first_name %>"
-    data-amount="<%= @booking.total_amount_pennies %>"
-    data-currency="<%= @booking.total_amount.currency %>"></script>
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-name="My booking"
+            data-email="<%= current_user.email %>"
+            data-description="booking <%= @booking.listing.user.first_name %>"
+            data-amount="<%= @booking.total_amount_pennies %>"
+            data-currency="<%= @booking.total_amount.currency %>">
+            </script>
         </div>
-     </a>
+      <% end %>
+
+     <!-- </a> -->
   </div>
 </div>

@@ -2,6 +2,7 @@ class PaymentsController < ApplicationController
   before_action :set_booking
 
   def new
+
   end
 
   def create
@@ -9,7 +10,6 @@ class PaymentsController < ApplicationController
     source: params[:stripeToken],
     email:  params[:stripeEmail]
   )
-
   charge = Stripe::Charge.create(
     customer:     customer.id,   # You should store this customer id and re-use it.
     amount:       @booking.total_amount_pennies,

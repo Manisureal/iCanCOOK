@@ -13,4 +13,3 @@ import { loadDynamicBannerText } from '../components/banner';
 
 loadDynamicBannerText();
 
-console.log('hi webopack')
