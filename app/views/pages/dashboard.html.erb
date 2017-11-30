@@ -2,7 +2,7 @@
 <div class="banner" style="height: 45vh; background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=2100&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');">
 
   <div class="banner-content">
-    <h1><%= @user.first_name %>'s Dashboard</h1>
+    <h1><%= @user.first_name.capitalize %>'s Dashboard</h1>
   </div>
 </div>
 
@@ -42,7 +42,7 @@
                 </div>
                 <div class="message-body">
                   <p><strong> Booked for: <%= booking.duration %> hrs</strong></p>
-                  <p><%= booking.listing.description %></p>
+                  <p><%= booking.listing.description.truncate(100) %></p>
                 </div>
                 <div class="message-status">
 
