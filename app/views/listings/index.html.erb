@@ -5,20 +5,35 @@
 
  <div class="container">
   <div class="row">
+    <div class="listing-row">
     <% @listings.each do |listing| %>
       <figure class="snip1336">
       <%= image_tag listing.photos %>
       <figcaption>
-        <img src="https://kitt.lewagon.com/placeholder/users/s" class="profile" />
-        <h2><%=listing.user.first_name %><span> Experience: <%= listing.experience  %> </span></h2>
-        <p> <%= listing.description.truncate(25)  %>  </p>
-        <p> <%= listing.dates.flatten %></p>
-        <p>Price per hour: <%= humanized_money_with_symbol(listing.price_amount) %></p>
-        <%= link_to "messages", create_convo_path(listing.user) , method: :post, class: "info" %>
+        <% unless listing.user.photo? %>
+        <img src="https://kitt.lewagon.com/placeholder/users/s" class="profile" alt="">
+        <% else %>
+        <%= image_tag listing.user.photo, class: "profile" %>
+        <% end %>
+
+        <h2><%=listing.user.first_name %><span> <p></p> <%= listing.description.truncate(25)  %> </span></h2>
+
+
+        <p> <% listing.dates.flatten %></p>
+        <p><i class="fa fa-cutlery"></i> Experience: <%= listing.experience %> years</p>
+        <p><i class="fa fa-tag"></i>Hourly price: <%= humanized_money_with_symbol(listing.price_amount) %></p>
+        <% if !listing.user.last_sign_in_at.nil? %>
+          <% last_online = (listing.user.last_sign_in_at) %>
+        <p>  <i class="fa fa-user-o"></i>Last online: <%= last_online.strftime("%A, %b %d") %></p>
+        <% else %>
+        <p>  <i class="fa fa-user-o"></i>Last online: <%= Date.today.strftime("%A, %b %d") %></p>
+        <% end %>
+        <%= link_to "message", create_convo_path(listing.user) , method: :post, class: "info" %>
         <%= link_to "more info", listing_path(listing.id), class: "info" %>
       </figcaption>
     </figure>
   <% end %>
+    </div>
   </div>
 </div>
 

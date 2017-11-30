@@ -2,22 +2,22 @@
       <h2>Availability</h2>
       <p>Select the dates which you are available to be booked</p>
         <%= f.input :dates, as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "Select date", label: false %>
-      <h2>Events to Cater</h2>
+      <h2>Events you can cater</h2>
         <%= f.input :events, as: :check_boxes, wrapper: :vertical_radio_and_checkboxes, collection: Listing::EVENTS , label: false%>
       <h2>About yourself</h2>
         <%= f.input :description %>
-        <%= f.input :experience %>
+        <%= f.input :experience, label: 'Years of experience' %>
         <%= f.input :speciality %>
-      <h2>Address Details</h2>
+      <h2>Address details</h2>
         <%= f.input :line1, label: 'Address line 1' %>
         <%= f.input :line2, label: 'Address line 2' %>
         <%= f.input :city %>
         <%= f.input :postcode %>
         <%= f.input :price_amount, label: 'Your price per hour (£)', input_html: { value: '' }, placeholder: ""%>
-      <h2>Bank Account Details</h2>
+      <h2>Bank Account details</h2>
         <%= f.input :sort_code %>
         <%= f.input :account_number %>
-      <h2>Photo Gallery</h2>
+      <h2>Photo gallery</h2>
       <p>Upload quality pictures of dishes you have cooked</p>
         <%= f.input :photos, label: false %>
         <%= f.button :submit, class: "btn btn-success" %>
