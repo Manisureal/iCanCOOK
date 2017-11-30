@@ -1,18 +1,46 @@
-<h1> You are booking <%= @booking.listing.user.first_name %></h1>
-<%= form_tag listing_booking_payments_path(@booking) do %>
-  <article>
-    <label class="amount">
-      <span>Amount: <%= humanized_money_with_symbol(@booking.total_amount) %></span>
-    </label>
-  </article>
 
+<div class="receipt">
+  <h3 id="Order-title">You are booking <%= @booking.listing.user.first_name%> <%= @booking.listing.user.surname %></h3>
+  <div class="payments">
+     <table>
+        <tr>
+           <td><p>Date</p></td>
+           <td><p><%= @booking.booking_date.strftime("%A, %b %d") %></p></td>
+        </tr>
+        <tr>
+           <td><p>Start time</p></td>
+           <td><p><%= @booking.start_time.strftime("%H:%M") %></p></td>
+        </tr>
+        <tr>
+           <td><p>End time</p></td>
+           <td><p><%= @booking.end_time.strftime("%H:%M") %></p></td>
+        </tr>
+        <tr>
+           <td><p>Duration</p></td>
+           <td><p><%= @booking.duration %> hrs</p></td>
+        </tr>
+        <tr>
+           <td><p>Price Per Hour</p></td>
+           <td><p>£<%= @booking.listing.price_amount %></p></td>
+        </tr>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+     </table>
+     <table class="total">
+        <tr>
+           <td><p>Total Price</p></td>
+           <td><p>£<%= @booking.total_amount %></p></td>
+        </tr>
+     </table>
+     <a class="pay">
+        <div class="pay">
+           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
     data-name="My booking"
     data-email="<%= current_user.email %>"
     data-description="booking <%= @booking.listing.user.first_name %>"
     data-amount="<%= @booking.total_amount_pennies %>"
     data-currency="<%= @booking.total_amount.currency %>"></script>
-
-<% end %>
+        </div>
+     </a>
+  </div>
+</div>
