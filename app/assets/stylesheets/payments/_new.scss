@@ -1,0 +1,85 @@
+#Order-title {
+  font-size: 40px;
+  margin-top: 40px;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+$leftTextMargin: 40px;
+$receiptWidth: 750px;
+
+.receipt {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   -webkit-transform: translate(-50%, -50%);
+   background-color: #FFFFFF;
+   width: $receiptWidth;
+   height: 425px;
+   margin: 0 auto;
+   -webkit-box-shadow: 0px 0px 47px 9px rgba(0,0,0,0.39);
+   -moz-box-shadow: 0px 0px 47px 9px rgba(0,0,0,0.39);
+   box-shadow: 0px 0px 47px 9px rgba(0,0,0,0.39);
+   $fadeDuration: 2s;
+   $fadeDelay: .4s;
+   -webkit-animation: fade $fadeDuration ease both;
+   -moz-animation: fade $fadeDuration ease both;
+   animation: fade $fadeDuration ease both;
+   -webkit-animation-delay: $fadeDelay;
+   -moz-animation-delay: $fadeDelay;
+   animation-delay: $fadeDelay;
+
+   h1 {
+      text-align: center;
+   }
+}
+
+.payments {
+   table {
+      width: 100%;
+      tr {
+         td {
+            margin: 0;
+            padding: 1px 75px;
+         }
+
+         td:nth-child(1) {
+            text-align: left;
+         }
+
+         td:nth-child(2) {
+            text-align: right;
+         }
+      }
+   }
+}
+
+.total {
+   background: #E6E6E6;
+
+   p {
+      color: #171717;
+   }
+}
+
+.pay {
+  text-align: center;
+  padding: 20px 0;
+}
+
+
+@keyframes fade {
+   from {opacity: 0 }
+   to { opacity: 1; }
+}
+
+@-webkit-keyframes fade {
+   from {opacity: 0 }
+   to { opacity: 1; }
+}
+
+@-moz-keyframes fade {
+   from {opacity: 0 }
+   to { opacity: 1; }
+}
