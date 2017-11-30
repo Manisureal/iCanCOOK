@@ -19,6 +19,7 @@ class ListingsController < ApplicationController
       @listings = Listing.all
     end
 
+    # @listing_user = @listings.where(@listing.user = current_user)
 
     @listings = @listings.order(created_at: :desc)
   end

@@ -6,18 +6,20 @@
  <div class="container">
   <div class="row">
     <% @listings.each do |listing| %>
-      <figure class="snip1336">
-      <%= image_tag listing.photos %>
-      <figcaption>
-        <img src="https://kitt.lewagon.com/placeholder/users/s" class="profile" />
-        <h2><%=listing.user.first_name %><span> Experience: <%= listing.experience  %> </span></h2>
-        <p> <%= listing.description.truncate(25)  %>  </p>
-        <p> <%= listing.dates.flatten %></p>
-        <p>Price per hour: <%= humanized_money_with_symbol(listing.price_amount) %></p>
-        <%= link_to "messages", create_convo_path(listing.user) , method: :post, class: "info" %>
-        <%= link_to "more info", listing_path(listing.id), class: "info" %>
-      </figcaption>
-    </figure>
+      <% if listing.user != current_user %>
+        <figure class="snip1336">
+        <%= image_tag listing.photos %>
+        <figcaption>
+          <img src="https://kitt.lewagon.com/placeholder/users/s" class="profile" />
+          <h2><%=listing.user.first_name %><span> Experience: <%= listing.experience  %> </span></h2>
+          <p> <%= listing.description.truncate(25)  %>  </p>
+          <p> <%= listing.dates.flatten %></p>
+          <p>Price per hour: <%= humanized_money_with_symbol(listing.price_amount) %></p>
+          <%= link_to "messages", create_convo_path(listing.user) , method: :post, class: "info" %>
+          <%= link_to "more info", listing_path(listing.id), class: "info" %>
+        </figcaption>
+      </figure>
+    <% end %>
   <% end %>
   </div>
 </div>
