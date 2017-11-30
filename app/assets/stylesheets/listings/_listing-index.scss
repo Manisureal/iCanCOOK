@@ -29,6 +29,9 @@
   background-color: #141414;
   padding: 25px;
   position: relative;
+  i {
+    margin-right: 5px;
+  }
 }
 .snip1336 figcaption:before {
   position: absolute;
@@ -88,4 +91,7 @@
   font-size: 0.8em;
   letter-spacing: 1px;
   opacity: 0.8;
+}
+.listing-row{
+  margin-top: 40px;
 }
