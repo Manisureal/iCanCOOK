@@ -9,7 +9,7 @@
     <% @listings.each do |listing| %>
 
       <figure class="snip1336">
-      <%= image_tag listing.photos %>
+      <%= cl_image_tag listing.photos, class: "listings-photo" %>
       <figcaption>
         <% unless listing.user.photo? %>
         <img src="https://kitt.lewagon.com/placeholder/users/s" class="profile" alt="">
