@@ -3,6 +3,9 @@
     <h1 class="text-center">Mailbox</h3>
      <% if @no_conversation %>
         <h3 class="text-center"> You have no messages! </h1>
+          <div class="cook-button">
+            <%= link_to "Back to Home", root_path, class: "btn-treehouse" %>
+          </div>
     <% end %>
       <div class="body-wrapper-convo">
         <article class="wrapper-convo">
