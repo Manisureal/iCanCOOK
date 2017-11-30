@@ -4,8 +4,9 @@ class ConversationsController < ApplicationController
 def index
  @conversations = policy_scope(Conversation)
  @users = User.all
-
-
+ if @conversations.empty?
+  @no_conversation = true
+  end
  end
 
 def create
