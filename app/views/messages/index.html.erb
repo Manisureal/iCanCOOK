@@ -1,6 +1,13 @@
 <% if @over_ten %>
  <%= link_to "Show Previous", "#" %>
 <% end %>
+<% if %>
+  <% (User.find(@conversation.sender_id)) != current_user  %>
+  <h1 class="text-center">Get to know <%= (User.find(@conversation.sender_id)).first_name %></h1>
+  <% else %>
+  <h1 class="text-center">Get to know <%= (User.find(@conversation.recipient_id)).first_name %></h1>
+<% end %>
+
 <div class="ui segment">
  <% @messages.each do |message| %>
   <section>
@@ -8,7 +15,7 @@
     <ul>
 
       <li class="<%= user?(message, current_user) %>">
-        <a class="user" href="#"><img alt="" src="<%= message.user.photo %>" /></a>
+        <a class="user" href=""><img alt="" src="<%= message.user.photo %>" /></a>
         <div class="date">
           <%= message.created_at.strftime("%b %e, %l:%M %p") %>
         </div>
@@ -29,15 +36,23 @@
 
 
 
-
+<div class="container" id="message-reply-cont">
 
 <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
  <div class="field">
-   <%= f.text_area :body, class: "form-control" %>
+   <%= f.text_area :body, class: "form-control", id:"message-reply" %>
  </div>
  <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
- <div>
-   <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
+ <div id="message-buttons">
+   <%= f.submit "Add Reply", class: "btn btn-success ui blue labeled submit icon button" %>
+  <% other_user = User.find(@conversation.not_me(current_user)) %>
+    <% if other_user.listing %>
+   <%= link_to "Book", listing_path(other_user.listing), class: "btn btn-treehouse btn-book"  %>
+  <% end %>
+
  </div>
 
 <% end %>
+</div>
+
+
