@@ -1,12 +1,13 @@
-<% if @not_found %>
-<h1> Sorry, We could not find any matching results. Please see below for all open listings on website</h1>
-<% end %>
+<%# if @not_found %>
+<!-- <h1> Sorry, We could not find any matching results. Please see below for all open listings on website</h1> -->
+<%# end %>
 
 
  <div class="container">
   <div class="row">
     <div class="listing-row">
     <% @listings.each do |listing| %>
+    <% if listing.user != current_user %>
 
       <figure class="snip1336">
       <%= cl_image_tag listing.photos, class: "listings-photo" %>
@@ -33,6 +34,7 @@
         <%= link_to "more info", listing_path(listing.id), class: "info" %>
       </figcaption>
     </figure>
+    <% end %>
   <% end %>
     </div>
   </div>
