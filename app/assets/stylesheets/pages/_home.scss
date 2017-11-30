@@ -4,7 +4,29 @@
   width: 140px;
   border-radius: 50%;
 }
+.home-form {
+  display: flex;
+  justify-content: space-around;
+  .btn {
+    height: 40px;
+    margin-top: 0px !important;
+    margin-left: 5px;
+    padding: 0px;
+    width: 140px;
+    border-radius: 5px;
+  }
+}
 
+.home-date{
+  width: 150px;
+  margin-left: 5px;
+  border-radius: 5px;
+}
+
+.home-postcode {
+  width:190px;
+  border-radius: 5px;
+}
 
 .wrapper-home {
   background-color: #F9F9F9;
@@ -27,6 +49,12 @@
     margin: 0;
 
   }
+}
+
+.search-boxes {
+  display: flex;
+  justify-content: around;
+
 }
 
 .wrapper-testimonial {
