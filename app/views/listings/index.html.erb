@@ -23,7 +23,7 @@
 
         <p> <% listing.dates.flatten %></p>
         <p><i class="fa fa-cutlery"></i> Experience: <%= listing.experience %> years</p>
-        <p><i class="fa fa-tag"></i>Hourly price: <%= humanized_money_with_symbol(listing.price_amount) %></p>
+        <p><i class="fa fa-tag"></i>Hourly price: <%= humanized_money_with_symbol(listing.price_amount_pennies) %></p>
         <% if !listing.user.last_sign_in_at.nil? %>
           <% last_online = (listing.user.last_sign_in_at) %>
         <p>  <i class="fa fa-user-o"></i>Last online: <%= last_online.strftime("%A, %b %d") %></p>

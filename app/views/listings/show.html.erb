@@ -55,6 +55,12 @@
         </form> -->
       </div>
       <div class="listing-show-card">
+
+        <h3>Details</h3>
+        <div class="flex">
+          <div class="flex">
+            <i class="material-icons mr-2">Price per hour: <%= humanized_money_with_symbol(@listing.price_amount_pennies) %></span><br>
+
         <h4>Bookings cadence:</h4>
           <div class="listing-show-card-info" style="margin-left: 0px;">
             <p class="listing-show-address text-center"><strong><i class="fa fa-calendar" aria-hidden="true"></i>
@@ -73,6 +79,7 @@
             </p>
             <p class="listing-show-address text-center"><strong><i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
  Total bookings: </strong><%= @nb_booking %></p>
+            
           </div>
       </div>
       <div class="listing-show-card">

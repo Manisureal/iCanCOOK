@@ -169,3 +169,23 @@ section {
     }
   }
 }
+#message-reply-cont {
+
+  display: flex;
+  justify-content: space-around;
+
+}
+#message-reply {
+      width: 500px;
+      border-radius: 5px;
+}
+
+#message-buttons{
+  display: flex;
+  justify-content: space-between;
+}
+.btn-book{
+  height: 45px;
+  margin-top: 22px;
+  width: 100px;
+}

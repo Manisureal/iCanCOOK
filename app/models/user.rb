@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :reviews
   has_many :messages
+  has_one :listing
 
   mount_uploader :photo, PhotoUploader
 
