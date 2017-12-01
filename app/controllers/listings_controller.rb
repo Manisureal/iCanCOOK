@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
     @listings = policy_scope(Listing)
     authorize @listings
 
+
     if params[:dates]
       @listings = @listings.where("? = ANY (dates)", params[:dates])
     end

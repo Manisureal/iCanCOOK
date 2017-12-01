@@ -6,20 +6,28 @@
  <div class="container">
   <div class="row fixed-footer">
     <div class="listing-row">
-    <% @listings.each do |listing| %>
-    <% if listing.user != current_user %>
-
-      <figure class="snip1336">
-      <%= cl_image_tag listing.photos, class: "listings-photo" %>
-      <figcaption>
-        <% unless listing.user.photo? %>
-        <img src="https://kitt.lewagon.com/placeholder/users/s" class="profile" alt="">
-        <% else %>
-        <%= image_tag listing.user.photo, class: "profile" %>
+      <% @listings.each do |listing| %>
+        <% if listing.user != current_user %>
+            <figure class="snip1336">
+            <%= cl_image_tag listing.photos, class: "listings-photo" %>
+            <figcaption>
+            <% unless listing.user.photo? %>
+              <img src="https://kitt.lewagon.com/placeholder/users/s" class="profile" alt="">
+          <% else %>
+            <%= image_tag listing.user.photo, class: "profile" %>
         <% end %>
+      <h2><%=listing.user.first_name.capitalize %><span id="listing-description"> <p></p> <%= listing.description  %> </span></h2>
+      <p><i class="fa fa-cutlery"></i> Experience: <%= listing.experience %> years</p>
+      <p><i class="fa fa-tag"></i>Hourly price: <%= humanized_money_with_symbol(listing.price_amount) %></p>
+      <p><i class="fa  fa-lightbulb-o "></i>Speciality: <%= listing.speciality %></p>
 
-        <h2><%=listing.user.first_name %><span> <p></p> <%= listing.description.truncate(25)  %> </span></h2>
+        <% bookings_completed = Booking.where(listing_id: listing.id).count %>
 
+
+      <p><i class="fa fa-calendar-check-o"></i>Has been booked <%= bookings_completed %> times</p>
+      <% if !listing.user.last_sign_in_at.nil? %>
+         <% last_online = (listing.user.last_sign_in_at) %>
+         <p>  <i class="fa fa-user-o"></i>Last online: <%= last_online.strftime("%A, %b %d") %></p>
 
         <p> <% listing.dates.flatten %></p>
         <p><i class="fa fa-cutlery"></i> Experience: <%= listing.experience %> years</p>
@@ -27,16 +35,17 @@
         <% if !listing.user.last_sign_in_at.nil? %>
           <% last_online = (listing.user.last_sign_in_at) %>
         <p>  <i class="fa fa-user-o"></i>Last online: <%= last_online.strftime("%A, %b %d") %></p>
+
         <% else %>
-        <p>  <i class="fa fa-user-o"></i>Last online: <%= Date.today.strftime("%A, %b %d") %></p>
-        <% end %>
-        <%= link_to "message", create_convo_path(listing.user) , method: :post, class: "info" %>
-        <%= link_to "more info", listing_path(listing.id), class: "info" %>
+        <p> <i class="fa fa-user-o"></i>Last online: <%= Date.today.strftime("%A, %b %d") %></p>
+      <% end %>
+      <%= link_to "message", create_convo_path(listing.user) , method: :post, class: "info" %>
+      <%= link_to "more info", listing_path(listing.id), class: "info" %>
       </figcaption>
-    </figure>
-    <% end %>
-  <% end %>
-    </div>
+      </figure>
+     <% end %>
+   <% end %>
+   </div>
   </div>
 </div>
 
