@@ -14,8 +14,8 @@
             <% unless listing.user.photo? %>
               <img src="https://kitt.lewagon.com/placeholder/users/s" class="profile" alt="">
           <% else %>
-            <%= image_tag listing.user.photo, class: "profile" %>
-        <% end %>
+            <%= cl_image_tag listing.user.photo, class: "profile", width: 120, height: 120, crop: :thumb %>
+          <% end %>
       <h2><%=listing.user.first_name.capitalize %><span id="listing-description"> <p></p> <%= listing.description  %> </span></h2>
       <p><i class="fa fa-cutlery"></i> Experience: <%= listing.experience %> years</p>
       <p><i class="fa fa-tag"></i>Hourly price: <%= humanized_money_with_symbol(listing.price_amount_pennies) %></p>

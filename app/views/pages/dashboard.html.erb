@@ -13,7 +13,7 @@
         <figure class="dashboard-user">
           <%= image_tag "https://source.unsplash.com/collection/1016/800x500", id: "logo" %>
           <figcaption>
-            <%= cl_image_tag @user.photo, class: "profile", width: 120, height: 120, crop: :thumb %>
+            <%= cl_image_tag @user.photo, class: "profile", width: 100, height: 100, crop: :thumb %>
             <h2><span> User info: </span></h2>
             <p><%= @user.first_name %></p>
             <p><%= @user.surname %></p>
