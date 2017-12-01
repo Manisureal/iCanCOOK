@@ -1,16 +1,20 @@
 <% if @over_ten %>
  <%= link_to "Show Previous", "#" %>
 <% end %>
+
 <% if %>
   <% (User.find(@conversation.sender_id)) != current_user  %>
-  <h1 class="text-center">Get to know <%= (User.find(@conversation.sender_id)).first_name %></h1>
+  <h2 class="text-center get-to-know">Get to know <%= (User.find(@conversation.sender_id)).first_name.capitalize %></h2>
   <% else %>
-  <h1 class="text-center">Get to know <%= (User.find(@conversation.recipient_id)).first_name %></h1>
+  <h2 class="text-center get-to-know">Get to know <%= (User.find(@conversation.recipient_id)).first_name.capitalize %></h2>
 <% end %>
 
+<% if @messages.count > 0 %>
+<h6 class="text-center">you have <%= @messages.count %> messages together</h6>
+<% end %>
 <div class="ui segment">
  <% @messages.each do |message| %>
-  <section>
+  <section class="message-lines">
   <div class="chat">
     <ul>
 
