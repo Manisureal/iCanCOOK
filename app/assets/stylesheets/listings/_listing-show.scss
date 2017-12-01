@@ -6,6 +6,10 @@
   align-items: center;
   justify-content: space-between;
 }
+.fa-2x {
+  margin-left: 15px;
+  color: #278f75;
+}
 
 .listing-card {
   width: 100%;
@@ -14,6 +18,15 @@
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.listing-show-card .profile {
+  border-radius: 50%;
+  // bottom: 100%;
+  // left: 25px;
+  z-index: 1;
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .listing-card-image {
@@ -46,6 +59,26 @@
   margin-bottom: 20px;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
   border-radius: 3px;
+  font-weight: lighter;
+}
+
+#listing-show-card-first {
+  display: flex;
+  justify-content: space-between;
+}
+
+.listing-show-card-avatar {
+  flex: 0 0 35%;
+}
+
+.listing-show-card-info {
+  flex: 1 0 65%;
+  align-items: center;
+  margin-left: 15px;
+  p {
+    text-align: left;
+    margin-right: 10px;
+  }
 }
 
 .map {
@@ -62,7 +95,32 @@
 }
 
 .listing-show-address {
-  font-weight: 300;
-  font-size: 20px;
   color: #333;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 6;
+  text-align: left;
+  // max-height: 3.6em;
+  // line-height: 1.8em;
+  // display: block; /* or inline-block */
+  // text-overflow: ellipsis;
+  // word-wrap: break-word;
+  // overflow: hidden;
+}
+
+#listing-show-address-price {
+  margin-top: 30px;
+  color: #32B796;
+}
+
+#btn-success-booking {
+  margin-bottom: 20px;
+}
+
+.listing-show-card-info-share {
+  display: flex;
+  margin: 30px 10px 10px 10px;
+  justify-content: space-between;
 }

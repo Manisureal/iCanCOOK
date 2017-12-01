@@ -1,30 +1,41 @@
-<div class="map" style="background-image: url('https://static.pexels.com/photos/357743/pexels-photo-357743.jpeg')"></div>
+<div class="map" style="height: 45vh; background-image: url('https://static.pexels.com/photos/357743/pexels-photo-357743.jpeg')">
+
+</div>
 
 <div class="container margin-top-negative">
   <div class="row">
     <div class="col-xs-12 col-md-8">
-      <div class="listing-show-card">
-
-        <h1 class="text-center"><%= @listing.user.first_name %></h1>
-        <p class="listing-show-address text-center">I have been cooking for<%= @listing.experience%></p>
+      <div class="listing-show-card" id="listing-show-card-first">
+        <div class="listing-show-card-avatar">
+          <%= image_tag @listing.user.photo, class: "profile", width: 250, height: 250, crop: :thumb %>
+        </div>
+        <div class="listing-show-card-info">
+          <p class="listing-show-address text-center"><strong>Name: </strong><%= @listing.user.first_name %> <%= @listing.user.surname %></p>
+          <p class="listing-show-address text-center"><strong>Experience: </strong>I have been cooking for <%= @listing.experience%> years</p>
+          <p class="listing-show-address text-center"><strong>Specialty: </strong><%= @listing.speciality %></p>
+          <p class="listing-show-address text-center"><strong>Events: </strong><% @listing.events.each do |event| %> <%= event %> | <% end %></p>
+          <p class="listing-show-address text-center"><strong>Description: </strong><%= @listing.description %></p>
+        </div>
       </div>
       <div class="listing-show-card">
-        <h3 class="text-center">More about this cook</h3>
-        <p><%= @listing.description %></p>
-        <div class="map" style="background-image: url('https://maps.googleapis.com/maps/api/staticmap?center=<%= @listing.line1 %><%= @listing.postcode %> &zoom=13&scale=2&size=1000x1000&maptype=roadmap&markers=size:mid%7Ccolor:0xff0000%7C<%= @listing.postcode %>&key=AIzaSyC0C-SkI5TYEeRaIft86MsCGUEVzEbRFMo')"></div>
-
-
+        <% address = "#{@listing.line1} #{@listing.line2}, #{@listing.city}, #{@listing.postcode}" %>
+        <p class="listing-show-address text-center"><strong>Location: </strong><%= address %></p>
+        <div class="map" style="background-image: url('https://maps.googleapis.com/maps/api/staticmap?center=<%= @listing.line1 %><%= @listing.postcode %> &zoom=13&scale=2&size=1000x1000&maptype=roadmap&markers=size:mid%7Ccolor:0xff0000%7C<%= @listing.postcode %>&key=AIzaSyC0C-SkI5TYEeRaIft86MsCGUEVzEbRFMo')">
+        </div>
     </div>
   </div>
 
     <div class="col-xs-12 col-md-4">
       <div class="listing-show-card">
-        <h5>Book this cook!</h5>
+        <h4>Book this cook!</h4>
         <%= simple_form_for [@listing, @booking]  do |f| %>
           <%= f.input :booking_date, as: :string, required: false, input_html: {class: "booking-datepicker"}, placeholder: "Select date" %>
           <%= f.input :start_time, as: :string, input_html: {class: "time-picker"}, placeholder: "Start time" %>
           <%= f.input :end_time, as: :string, input_html: {class: "time-picker"}, placeholder: "End time" %>
-          <%= f.submit class: "btn btn-success" %>
+          <div>
+            <p class="listing-show-address text-center" id="listing-show-address-price">Total amount to pay: <%= @listing.price_amount_pennies %></p>
+          </div>
+          <%= f.submit class: "btn btn-success", id: "btn-success-booking" %>
         <% end %>
 <!--
         <form action="">
@@ -44,23 +55,40 @@
         </form> -->
       </div>
       <div class="listing-show-card">
+
         <h3>Details</h3>
         <div class="flex">
           <div class="flex">
-            <i class="material-icons mr-2">Price per Hour: Price per hour: <%= humanized_money_with_symbol(@listing.price_amount) %></span><br>
+            <i class="material-icons mr-2">Price per hour: <%= humanized_money_with_symbol(@listing.price_amount_pennies) %></span><br>
+
+        <h4>Bookings cadence:</h4>
+          <div class="listing-show-card-info" style="margin-left: 0px;">
+            <p class="listing-show-address text-center"><strong><i class="fa fa-calendar" aria-hidden="true"></i>
+ Availability: </strong>
+              <% @listing.dates.each do |date| %>
+                <%= date.to_date.strftime("%A, %b %d") %>;
+              <% end %>
+            </p>
+            <p class="listing-show-address text-center"><strong><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+ Last booked on: </strong>
+              <% if @last_booking %>
+                <%= @last_booking.date.to_date.strftime("%A, %b %d") %>
+              <% else %>
+                No bookings yet
+              <% end %>
+            </p>
+            <p class="listing-show-address text-center"><strong><i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+ Total bookings: </strong><%= @nb_booking %></p>
+            
           </div>
-        </div>
       </div>
       <div class="listing-show-card">
-        <div class="flex-align">
-          <h6 class="no-mb">Share</h6>
-
-          <div class="flex">
-            <i class="fa fa-facebook-square fa-2x mr-2"></i>
-            <i class="fa fa-twitter-square fa-2x mr-2"></i>
-            <i class="fa fa-pinterest-square fa-2x mr-2"></i>
-            <i class="fa fa-envelope-square fa-2x"></i>
-          </div>
+        <h4 class="no-mb">Share this cook</h4>
+        <div class="listing-show-card-info-share">
+          <i class="fa fa-facebook-square fa-2x mr-2"> </i>
+          <i class="fa fa-twitter-square fa-2x mr-2"> </i>
+          <i class="fa fa-pinterest-square fa-2x mr-2"> </i>
+          <i class="fa fa-envelope-square fa-2x"></i>
         </div>
       </div>
     </div>
