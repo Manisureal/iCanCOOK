@@ -28,6 +28,8 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @booking = Booking.new
     authorize @listing
+    @last_booking = Booking.where(listing_id: @listing.user.id).last
+    @nb_booking = Booking.where(listing_id: @listing.user.id).length
   end
 
   def new
