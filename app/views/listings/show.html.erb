@@ -55,29 +55,21 @@
         </form> -->
       </div>
       <div class="listing-show-card">
-
-
-        <div class="flex">
-          <div class="flex">
-            <i class="material-icons mr-2">
-
-        <h4>Bookings cadence:</h4>
-          <div class="listing-show-card-info" style="margin-left: 0px;">
-
-            <p class="listing-show-address text-center"><strong><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+        <h4 id="booking-stats">Booking stats:</h4>
+        <div class="listing-show-card-info" style="margin-left: 0px;">
+          <p class="listing-show-address text-center"><strong><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
  Last booked on: </strong>
               <% if @last_booking %>
                 <%= @last_booking.date.to_date.strftime("%A, %b %d") %>
               <% else %>
                 No bookings yet
               <% end %>
-            </p>
-            <p class="listing-show-address text-center"><strong><i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+          </p>
+          <p class="listing-show-address text-center"><strong><i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
  Total bookings: </strong><%= @nb_booking %></p>
-
-          </div>
+        </div>
       </div>
-    </div>
+
       <div class="listing-show-card">
         <h4 class="no-mb">Share this cook</h4>
         <div class="listing-show-card-info-share">
