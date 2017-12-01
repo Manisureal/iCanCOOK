@@ -60,7 +60,7 @@
           <p class="listing-show-address text-center"><strong><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
  Last booked on: </strong>
               <% if @last_booking %>
-                <%= @last_booking.date.to_date.strftime("%A, %b %d") %>
+                <%= @last_booking.booking_date.to_date.strftime("%A, %b %d") %>
               <% else %>
                 No bookings yet
               <% end %>
