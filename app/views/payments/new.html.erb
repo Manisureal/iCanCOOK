@@ -39,7 +39,7 @@
             data-name="My booking"
             data-email="<%= current_user.email %>"
             data-description="booking <%= @booking.listing.user.first_name %>"
-            data-amount="<%= @booking.total_amount_pennies %>"
+            data-amount="<% @booking.total_amount_pennies %>"
             data-currency="<%= @booking.total_amount.currency %>">
             </script>
         </div>
