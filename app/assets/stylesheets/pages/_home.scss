@@ -164,5 +164,19 @@ figure.snip1139 .author h5 span {
   height: 50%;
   width: 100%;
 }
-/* Demo purposes only */
+/* DMedia Queries for search box */
+@media (max-width: 767px) {
+  .home-form {
+    display: grid;
+    grid-auto-rows: minmax(50px, auto);
+    .home-date {
+      position: relative;
+      left: 15px;
+    }
+    .btn {
+      position: relative;
+      left: 50px;
+    }
+  }
+}
 
