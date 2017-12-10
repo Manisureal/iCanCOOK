@@ -112,3 +112,21 @@
 .fixed-footer {
   min-height: 100vh;
 }
+
+@media (min-width: 1220px) {
+  .centar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+}
+
+@media (min-width: 400px) {
+  .centar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+}
