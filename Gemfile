@@ -10,7 +10,7 @@ gem 'puma'
 gem 'rails', '5.1.4'
 gem 'redis'
 gem "pundit"
-gem 'carrierwave', '~> 0.11.2'
+gem 'carrierwave', '~> 1.3.2'
 gem 'money-rails'
 gem 'stripe'
 
