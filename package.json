@@ -2,7 +2,7 @@
   "name": "iCanCOOK",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^3.0.2",
+    "@rails/webpacker": "^5.4.3",
     "bootstrap": "3",
     "coffeescript": "1.12.7",
     "flatpickr": "^4.1.2",
